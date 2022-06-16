@@ -1,52 +1,65 @@
-
-//javascript trabaja la programacion orientada a objetos en base a  prototipos 
-//en 2015 javascript implemento las clases en modo de sintaxis por detras sigue usando prototipos
-//en javascript no exixten las variables privadas
-
-// creacion de clase Persona
+// Crea una clase Persona con las siguientes variables: La edad, El nombre, El teléfono
 class Persona{
     constructor(edad, nombre, telefono){
     this.edad = edad;
     this.nombre = nombre;
     this.telefono = telefono;
     }
+};
 
-    // Crear gets y sets de cada propiedad.
-    get getEdad() { 
-        return this.edad;
+class Cliente extends Persona { //crea una nueva clase Cliente que herede de Persona,
+    constructor(edad, nombre, telefono, cerdito){
+       super(edad, nombre, telefono); 
+       this.credito = null; //esta nueva clase tendrá la variable credito solo para esa clase.
     }
-    get getNombre() {
-         return this.nombre; 
-    }
-    get getTelefono() { 
-        return this.telefono; 
-    }
+    get getEdad() { return this.edad;}
+    get getNombre() { return this.nombre;}
+    get getTelefono() {  return this.telefono;}
+    get getCredito() { return this.credito;}
 
+    set setEdad(edad) { this.edad = edad; }
+    set setNombre(nombre) {  this.nombres = nombre;} 
+    set setTelefono(telefono) {  this.telefono = telefono; }
+    set setCredito(credito) { this.credito = credito;} 
     
-    set setNombre(nombre) { 
-        this.nombres = nombre; 
-    } 
-    set setTelefono(telefono) { 
-        this.telefono = telefono; 
-    } 
-    set setEdad(edad) {
-         this.edad = edad; 
+    
+}
+const miCliente = new Cliente(); //Crea ahora un objeto de la clase Cliente
+
+//tienes que darles valor y mostrarlas por pantalla.
+miCliente.setEdad = "31";
+miCliente.nombre = "Omar";
+miCliente.setTelefono = "08005000";
+miCliente.setCredito = "100000";
+
+console.log(miCliente);
+
+//Una vez hecho esto, haz lo mismo con la clase Trabajador que herede de Persona, y con una variable salario que solo tenga la clase Trabajador.
+class Trabajador extends Persona {
+    constructor(edad, nombre, telefono, salario){
+       super(edad, nombre, telefono); 
+       this.salario = null;
     }
 
+    get getEdad() { return this.edad;}
+    get getNombre() { return this.nombre;}
+    get getTelefono() {  return this.telefono;}
+    get getSalario() { return this.salario;}
 
+    set setEdad(edad) { this.edad = edad; }
+    set setNombre(nombre) {  this.nombres = nombre;} 
+    set setTelefono(telefono) {  this.telefono = telefono; }
+    set setSalario(salario) { this.salario = salario;} 
+    
+    
 }
+const miTrabajador = new Trabajador();
 
-//  Crear un objeto persona
-const miPersona = new Persona();
+miTrabajador.setEdad = "25";
+miTrabajador.nombre = "Jose";
+miTrabajador.setTelefono = "39993933";
+miTrabajador.setSalario = "25000";
 
-// Utiliza los gets y sets para darle valores a las propiedades edad, nombre y telefono, 
-miPersona.setEdad = "30";
-console.log(miPersona.getEdad);
-miPersona.nombre = "Francisco";
-console.log(miPersona.getNombre);
-miPersona.setTelefono = "111222333";
-console.log(miPersona.getTelefono);
+console.log(miTrabajador);
 
-//por último muéstralas por consola.
-console.log(miPersona);
 
